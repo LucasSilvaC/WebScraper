@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+#pip install openpyxl
 
 response = requests.get('https://lucassilvac.github.io/WebScraper/')
 
