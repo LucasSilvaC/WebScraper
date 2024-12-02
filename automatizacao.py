@@ -1,35 +1,35 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-#pip install openpyxl
+# pip install openpyxl
 
-response = requests.get('https://lucassilvac.github.io/WebScraper/')
+#URL
+response = requests.get('https://lucassilvac.github.io/WebScraper/')  
 
+#Se o site estiver no ar e correspondeer
 if response.status_code == 200:
-    html = response.text  
-    soup = BeautifulSoup(html, 'html.parser') 
+    html = response.text
+    soup = BeautifulSoup(html, 'html.parser') #Faz a comunicação para pegar as informações
 
-    h2_tags = soup.find_all('h2')
-    paragrafos = soup.find_all('p')
+    table_rows = soup.select('table tbody tr')  #Define a tag "tr" da tabela para o web scraper pegar
 
-    nomes_produtos = [h2.text for h2 in h2_tags]
-    precos_produtos = [paragrafo.text for paragrafo in paragrafos]
+    nomes = [] #Cria duas listas vazias para armazenar nome e nota
+    notas = [] 
 
-    max_length = max(len(nomes_produtos), len(precos_produtos))
-
-    nomes_produtos += [''] * (max_length - len(nomes_produtos))
-    precos_produtos += [''] * (max_length - len(precos_produtos))
+    for row in table_rows: #Faz um for retirando cada nome e cada nota e armazenando na lista
+        columns = row.find_all('td')  
+        if len(columns) >= 3:  
+            nomes.append(columns[0].text.strip()) 
+            notas.append(columns[2].text.strip())
 
     data = {
-        'Produto': nomes_produtos,
-        'Preço': precos_produtos,
+        'Nome': nomes,
+        'Nota': notas,
     }
+    df = pd.DataFrame(data) #Com o pandas define o data com as info para colocar no xlsx 
 
-    df = pd.DataFrame(data)
+    df.to_excel('relatorio_notas.xlsx', index=False) #Gera o excel
 
-    df.to_excel('produtos_cucas.xlsx', index=False)
-
-    print("Arquivo Excel 'produtos_cucas.xlsx' criado com sucesso!")
-
+    print("Arquivo Excel 'relatorio_notas.xlsx' criado com sucesso!") #Exibe se o arquivo foi criado com sucesso
 else:
-    print(f"Erro ao acessar a página: {response.status_code}")
+    print(f"Erro ao acessar a página: {response.status_code}") #Retorna erro de conexão
