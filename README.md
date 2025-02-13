@@ -1,6 +1,6 @@
 # 👋 &nbsp;Hi there
 # WebScrapper - LOPAL
-Integrative project that brings together all the subjects at Senai Roberto Mange.
+Example code for Web Scrapper to pull data from a website and generate it in a spreadsheet.
 
 &nbsp;
 
