@@ -1,5 +1,5 @@
 # 👋 &nbsp;Hi there
-# WebScrapper - LOPAL
+# WebScrapping - LOPAL
 Example code for Web Scrapper to pull data from a website and generate it in a spreadsheet.
 
 &nbsp;
@@ -13,4 +13,4 @@ Example code for Web Scrapper to pull data from a website and generate it in a s
 &nbsp;
 
 ## 🖥 &nbsp;Repository
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=LucasSilvaC&repo=WebScrapper&bg_color=0d1116&title_color=ce09ec&text_color=a4aacb&icon_color=007ec6)](https://github.com/LucasSilvaC/WebScrapper) &nbsp;
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=LucasSilvaC&repo=WebScrapping&bg_color=0d1116&title_color=ce09ec&text_color=a4aacb&icon_color=007ec6)](https://github.com/LucasSilvaC/WebScrapping) &nbsp;
